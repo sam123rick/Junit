@@ -1,4 +1,4 @@
-package cn.jtest.learn.Domain;
+package cn.jtest.learn.domain;
 
 public class Person {
     public String name;

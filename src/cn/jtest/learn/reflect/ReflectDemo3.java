@@ -1,8 +1,7 @@
 package cn.jtest.learn.reflect;
 
-import cn.jtest.learn.Domain.Person;
+import cn.jtest.learn.domain.Person;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 public class ReflectDemo3 {

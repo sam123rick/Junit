@@ -1,9 +1,8 @@
 package cn.jtest.learn.reflect;
 
-import cn.jtest.learn.Domain.Person;
+import cn.jtest.learn.domain.Person;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
 
 public class ReflectDemo2 {
     public static void main(String[] args) throws Exception{

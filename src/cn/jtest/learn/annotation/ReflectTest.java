@@ -1,9 +1,10 @@
-package cn.jtest.learn.reflect;
+package cn.jtest.learn.annotation;
 
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.Properties;
 
+@Pro(className = "cn.jtest.learn.annotation.Demo1", methodName = "show")
 public class ReflectTest {
     public static void main(String[] args) throws Exception{
         // Can construct any Object and can execute any method
@@ -11,15 +12,18 @@ public class ReflectTest {
         /*
         Precondition: Can't change any code in this class. Can construct any class object. Can execute any mehtod
          */
-        // 1. load properties file
-        Properties pro = new Properties();
-        ClassLoader classLoader = ReflectTest.class.getClassLoader();
-        InputStream is = classLoader.getResourceAsStream("pro.properties");
-        pro.load(is);
 
-        // 2. Load data in the properties file
-        String className = pro.getProperty("className");
-        String methodName = pro.getProperty("methodName");
+        // Get the annotated class
+        Class<ReflectTest> reflectTestClass = ReflectTest.class;
+        // Get the annotation object above
+        // This line generates a child Class which implements this annotation Pro in memory
+        Pro annotation = reflectTestClass.getAnnotation(Pro.class);
+        //  get the return method of this className
+        String className = annotation.className();
+        String methodName = annotation.methodName();
+
+        System.out.println(className);
+        System.out.println(methodName);
 
         // 3. Load the Class to memory
         Class cls = Class.forName(className);
@@ -33,6 +37,5 @@ public class ReflectTest {
 
         // 6. Execute method
         method.invoke(obj);
-
     }
 }
